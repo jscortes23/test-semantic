@@ -3,6 +3,25 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "release": {
+    "branches": [
+      "main",
+      "next"
+    ]
+  },
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          "dist/**"
+        ]
+      }
+    ],
+    "@semantic-release/git"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
