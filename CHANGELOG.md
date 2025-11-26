@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/jscortes23/test-semantic/compare/v1.2.0...v1.2.1) (2025-11-26)
+
+
+### Bug Fixes
+
+* **github:** allow permission ([e3d7aff](https://github.com/jscortes23/test-semantic/commit/e3d7affac376ac4fc587f88e96fe01e33383c030))
+
 # [1.2.0](https://github.com/jscortes23/test-semantic/compare/v1.1.0...v1.2.0) (2025-11-26)
 
 
