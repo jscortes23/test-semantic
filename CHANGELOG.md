@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/jscortes23/test-semantic/compare/v1.2.1...v1.2.2) (2025-11-26)
+
+
+### Bug Fixes
+
+* **package:** add plugin from semantic-release ([51f3ae7](https://github.com/jscortes23/test-semantic/commit/51f3ae7d923cd1217dcf4b7dfc1544e0784099dd))
+
 ## [1.2.1](https://github.com/jscortes23/test-semantic/compare/v1.2.0...v1.2.1) (2025-11-26)
 
 
