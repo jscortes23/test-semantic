@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/jscortes23/test-semantic/compare/v1.2.2...v1.2.3) (2025-11-26)
+
+
+### Bug Fixes
+
+* **release:** update branch from 'next' to 'develop' ([45f759c](https://github.com/jscortes23/test-semantic/commit/45f759c9ab304a8702adcc4c22ae4308a006c285))
+
 ## [1.2.2](https://github.com/jscortes23/test-semantic/compare/v1.2.1...v1.2.2) (2025-11-26)
 
 
