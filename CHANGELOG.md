@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/jscortes23/test-semantic/compare/v1.1.0...v1.2.0) (2025-11-26)
+
+
+### Features
+
+* **global:** add lib commitizen ([00e29d5](https://github.com/jscortes23/test-semantic/commit/00e29d5acf35c079462900ca9435fed36253a371))
+
 # [1.1.0](https://github.com/jscortes23/test-semantic/compare/v1.0.2...v1.1.0) (2025-11-26)
 
 
