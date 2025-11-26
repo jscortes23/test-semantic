@@ -6,7 +6,7 @@
   "release": {
     "branches": [
       "main",
-      "next"
+      "develop"
     ],
     "plugins": [
       "@semantic-release/commit-analyzer",
