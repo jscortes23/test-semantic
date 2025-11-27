@@ -46,7 +46,6 @@ function App() {
         </p>
 
       </div>
-      <button onClick={showConfeti}>Show conffeti</button>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
