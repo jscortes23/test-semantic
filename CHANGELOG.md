@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/jscortes23/test-semantic/compare/v1.3.0...v1.3.1) (2025-11-27)
+
+
+### Bug Fixes
+
+* remove confetti ([e17bd81](https://github.com/jscortes23/test-semantic/commit/e17bd81c96a4fac566712fa50939b7aba035b52b))
+
 # [1.3.0](https://github.com/jscortes23/test-semantic/compare/v1.2.3...v1.3.0) (2025-11-27)
 
 
