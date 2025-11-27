@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/jscortes23/test-semantic/compare/v1.2.3...v1.3.0) (2025-11-27)
+
+
+### Features
+
+* add canvas-confetti for celebratory effects in the app ([d46cc9d](https://github.com/jscortes23/test-semantic/commit/d46cc9d438d91992407a662eebb80d286d60c1c5))
+
 ## [1.2.3](https://github.com/jscortes23/test-semantic/compare/v1.2.2...v1.2.3) (2025-11-26)
 
 
