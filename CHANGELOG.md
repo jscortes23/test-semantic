@@ -12,6 +12,13 @@
 
 * add canvas-confetti for celebratory effects in the app ([d46cc9d](https://github.com/jscortes23/test-semantic/commit/d46cc9d438d91992407a662eebb80d286d60c1c5))
 
+## [1.5.1](https://github.com/jscortes23/test-semantic/compare/v1.5.0...v1.5.1) (2026-01-09)
+
+
+### Bug Fixes
+
+* **App:** adjust randomInRange function to include an offset of 2 ([#12](https://github.com/jscortes23/test-semantic/issues/12)) ([11b0b6e](https://github.com/jscortes23/test-semantic/commit/11b0b6e6013d4d4fc933c325e9138a19cbc8af58))
+
 ## [1.5.0](https://github.com/jscortes23/test-semantic/compare/v1.4.0...v1.5.0) (2026-01-09)
 
 
