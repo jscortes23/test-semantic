@@ -45,6 +45,9 @@ function App() {
         <button onClick={handleCount}>
           +
         </button>
+        <button onClick={handleCount}>
+          +
+        </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
