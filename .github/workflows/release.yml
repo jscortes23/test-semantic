@@ -30,6 +30,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
+          package-name: test-semantic
           target-branch: main
       # - name: Release
       #   env:
