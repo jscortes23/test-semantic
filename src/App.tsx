@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -21,6 +21,10 @@ function App() {
     particleCount: randomInRange(50, 100),
     origin: { y: 0.6 }
   });
+
+  useLayoutEffect(() => {
+    localStorage.setItem("prueba", "test")
+  }, [])
 
   return (
     <>
@@ -49,6 +53,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <button onClick={showConfeti}>Throw confetti</button>
     </>
   )
 }
