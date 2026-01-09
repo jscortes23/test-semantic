@@ -54,6 +54,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <button onClick={showConfeti}>Throw confetti</button>
+      <button onClick={showConfeti}>Throw 2 confetti</button>
     </>
   )
 }
