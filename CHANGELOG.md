@@ -1,3 +1,36 @@
+## [1.3.1](https://github.com/jscortes23/test-semantic/compare/v1.3.0...v1.3.1) (2025-11-27)
+
+
+### Bug Fixes
+
+* remove confetti ([e17bd81](https://github.com/jscortes23/test-semantic/commit/e17bd81c96a4fac566712fa50939b7aba035b52b))
+
+# [1.3.0](https://github.com/jscortes23/test-semantic/compare/v1.2.3...v1.3.0) (2025-11-27)
+
+
+### Features
+
+* add canvas-confetti for celebratory effects in the app ([d46cc9d](https://github.com/jscortes23/test-semantic/commit/d46cc9d438d91992407a662eebb80d286d60c1c5))
+
+## [1.5.0](https://github.com/jscortes23/test-semantic/compare/v1.4.0...v1.5.0) (2026-01-09)
+
+
+### Features
+
+* improve workflow for release ([#8](https://github.com/jscortes23/test-semantic/issues/8)) ([f590ea8](https://github.com/jscortes23/test-semantic/commit/f590ea80a7a4909decc0d49500da3d48fd2e10b6))
+
+## [1.4.0](https://github.com/jscortes23/test-semantic/compare/v1.3.1...v1.4.0) (2026-01-09)
+
+
+### Features
+
+* add application version to Vite config ([b3a2b1c](https://github.com/jscortes23/test-semantic/commit/b3a2b1c44eb105a218ffcac8edb01a21498598fc))
+
+
+### Bug Fixes
+
+* **release:** correct token key in release workflow ([#5](https://github.com/jscortes23/test-semantic/issues/5)) ([beb9636](https://github.com/jscortes23/test-semantic/commit/beb96363feb6bcdd46139fa3aab8e7c4ccd57da5))
+
 ## [1.2.3](https://github.com/jscortes23/test-semantic/compare/v1.2.2...v1.2.3) (2025-11-26)
 
 
