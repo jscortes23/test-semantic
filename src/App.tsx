@@ -59,6 +59,7 @@ function App() {
       <button onClick={showConfeti}>Throw confetti</button>
       <button onClick={showConfeti}>Throw 2 confetti</button>
       <button onClick={showConfeti}>Throw 3 confetti</button>
+      <button onClick={showConfeti}>Throw 4 confetti</button>
     </>
   )
 }
