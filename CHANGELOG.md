@@ -12,6 +12,13 @@
 
 * add canvas-confetti for celebratory effects in the app ([d46cc9d](https://github.com/jscortes23/test-semantic/commit/d46cc9d438d91992407a662eebb80d286d60c1c5))
 
+## [1.5.0](https://github.com/jscortes23/test-semantic/compare/v1.4.0...v1.5.0) (2026-01-09)
+
+
+### Features
+
+* improve workflow for release ([#8](https://github.com/jscortes23/test-semantic/issues/8)) ([f590ea8](https://github.com/jscortes23/test-semantic/commit/f590ea80a7a4909decc0d49500da3d48fd2e10b6))
+
 ## [1.4.0](https://github.com/jscortes23/test-semantic/compare/v1.3.1...v1.4.0) (2026-01-09)
 
 
