@@ -12,7 +12,7 @@ function App() {
   const handleDecrement = () => setCount(count => count - 1)
 
   const randomInRange = (min: number, max: number) => {
-    return Math.random() * (max - min) + min;
+    return Math.random() * (max - min) + min + 2;
   }
 
   const showConfeti = () => confetti({
