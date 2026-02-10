@@ -25,10 +25,22 @@ jobs:
       - name: Enable pnpm
         run: corepack enable pnpm
 
+      - name: Get pnpm store path
+        id: pnpm-store
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-store.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
       - name: Install dependencies
-        working-directory: app
         run: pnpm install --frozen-lockfile
 
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-        working-directory: app
         run: pnpm audit
+
+
