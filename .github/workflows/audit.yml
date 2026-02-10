@@ -26,9 +26,8 @@ jobs:
         run: corepack enable pnpm
 
       - name: Install dependencies
-        working-directory: app
         run: pnpm install --frozen-lockfile
 
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-        working-directory: app
         run: pnpm audit
+
