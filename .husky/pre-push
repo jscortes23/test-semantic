@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+echo "Running TypeScript check (tsc -b)..."
+pnpm exec tsc -b || {
+  echo ""
+  echo "Push blocked: TypeScript errors found. Fix them and push again."
+  exit 1
+}

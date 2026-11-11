@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+node scripts/check-staged-files.mjs || exit 1
+pnpm exec lint-staged
