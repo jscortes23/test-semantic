@@ -3,27 +3,31 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import confetti from 'canvas-confetti'
+import { APP_VERSION } from './config/appVersion'
+import { useVersionCheck } from './libs/useVersionCheck'
+import { UpdateBanner } from './components/UpdateBanner'
 
 function App() {
   const [count, setCount] = useState(0)
+  const availableVersion = useVersionCheck()
 
   const handleCount = () => setCount(count => count + 1)
 
   const handleDecrement = () => setCount(count => count - 1)
 
   const randomInRange = (min: number, max: number) => {
-    return Math.random() * (max - min) + min + 2;
+    return Math.random() * (max - min) + min + 2
   }
 
   const showConfeti = () => confetti({
     angle: randomInRange(55, 125),
     spread: randomInRange(50, 70),
     particleCount: randomInRange(50, 100),
-    origin: { y: 0.6 }
-  });
+    origin: { y: 0.6 },
+  })
 
   useLayoutEffect(() => {
-    localStorage.setItem("prueba", "test")
+    localStorage.setItem('prueba', 'test')
   }, [])
 
   return (
@@ -60,6 +64,8 @@ function App() {
       <button onClick={showConfeti}>Throw 2 confetti</button>
       <button onClick={showConfeti}>Throw 3 confetti</button>
       <button onClick={showConfeti}>Throw 4 confetti</button>
+      <footer className="app-version">v{APP_VERSION}</footer>
+      {availableVersion && <UpdateBanner version={availableVersion} />}
     </>
   )
 }
