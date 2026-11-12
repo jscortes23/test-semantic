@@ -1,17 +1,17 @@
-name: Validate PR title
+name: PR title
 
 on:
   pull_request:
-    types: [opened, edited, synchronize]
+    types: [opened, edited, synchronize, reopened]
+    branches: [develop, main]
 
 permissions:
   pull-requests: read
 
 jobs:
-  lint-pr-title:
-    name: Lint PR title
+  pr-title:
+    name: Conventional PR title
     runs-on: ubuntu-latest
-
     steps:
       - uses: amannn/action-semantic-pull-request@v5
         env:
@@ -20,14 +20,14 @@ jobs:
           types: |
             feat
             fix
-            chore
-            docs
-            refactor
             perf
+            revert
+            refactor
+            style
+            docs
             test
             build
             ci
-
+            chore
+          # No `scopes` list: any scope is accepted, matching the warning-only scope rule in commitlint.
           requireScope: false
-
-          allowBreakingChange: true

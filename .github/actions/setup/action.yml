@@ -1,0 +1,15 @@
+name: Setup frontend
+description: Install Node, pnpm and dependencies
+runs:
+  using: composite
+  steps:
+    - uses: pnpm/action-setup@v6
+      with:
+        package_json_file: package.json
+    - uses: actions/setup-node@v7
+      with:
+        node-version-file: .nvmrc
+        cache: pnpm
+        cache-dependency-path: pnpm-lock.yaml
+    - run: pnpm install --frozen-lockfile
+      shell: bash

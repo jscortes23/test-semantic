@@ -1,0 +1,45 @@
+name: Release production
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: release-production
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/create-github-app-token@v1
+        id: app
+        with:
+          app-id: ${{ secrets.RELEASE_APP_ID }}
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ steps.app.outputs.token }}
+      - uses: ./.github/actions/setup
+      - name: Semantic release (stable)
+        env:
+          GITHUB_TOKEN: ${{ steps.app.outputs.token }}
+        run: pnpm exec semantic-release
+      - name: Back-merge main into develop
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: |
+          git fetch origin main develop
+          if git merge-base --is-ancestor origin/main origin/develop; then
+            echo "develop already contains main."
+            exit 0
+          fi
+          gh pr create --base develop --head main \
+            --title "chore(release): back-merge main into develop" \
+            --body "Automatic back-merge after a production release." || echo "A back-merge PR already exists."

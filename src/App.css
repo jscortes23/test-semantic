@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+.app-version {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
