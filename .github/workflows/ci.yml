@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [develop, main]
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  checks:
+    name: Lint, typecheck and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm build:staging
+
+  commitlint:
+    name: Commit messages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/setup
+      - run: pnpm exec commitlint --from "${{ github.event.pull_request.base.sha }}" --to "${{ github.event.pull_request.head.sha }}"
+
+  secrets:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: |
+          docker run --rm -v "$PWD:/repo" zricethezav/gitleaks:latest detect \
+            --source /repo --config /repo/.gitleaks.toml --redact --verbose \
+            --log-opts="${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
+
+  audit:
+    name: Dependency audit (non-blocking)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if pnpm audit --audit-level=high > audit.txt 2>&1; then
+            echo "No high or critical vulnerabilities." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          # PR comments are capped at 65,536 characters: comment a compact table, keep the full output in the Job Summary.
+          pnpm audit --json > audit.json 2>/dev/null || true
+          node scripts/audit-summary.mjs audit.json \
+            "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" > audit-comment.md
+          {
+            cat audit-comment.md
+            echo ""
+            echo "<details><summary>Full pnpm audit output</summary>"
+            echo ""
+            echo '```'
+            head -c 900000 audit.txt
+            echo '```'
+            echo "</details>"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "::warning::pnpm audit found high or critical vulnerabilities (non-blocking)."
+          gh pr comment "${{ github.event.pull_request.number }}" --body-file audit-comment.md || true

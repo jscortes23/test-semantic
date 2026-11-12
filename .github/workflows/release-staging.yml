@@ -1,0 +1,48 @@
+name: Release staging
+
+on:
+  push:
+    branches: [develop]
+
+concurrency:
+  group: release-staging
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/create-github-app-token@v1
+        id: app
+        with:
+          app-id: ${{ secrets.RELEASE_APP_ID }}
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ steps.app.outputs.token }}
+      - uses: ./.github/actions/setup
+      - name: Semantic release (rc)
+        env:
+          GITHUB_TOKEN: ${{ steps.app.outputs.token }}
+        run: pnpm exec semantic-release
+      - name: Resolve version
+        id: version
+        run: |
+          git fetch --tags --force
+          echo "value=$(git describe --tags --abbrev=0 --match 'v[0-9]*' | sed 's/^v//')" >> "$GITHUB_OUTPUT"
+      - run: pnpm version "${{ steps.version.outputs.value }}" --no-git-tag-version --allow-same-version
+      - name: Build staging
+        # This repo uses no VITE_* variables yet. Add them with the _STAGING suffix, e.g.:
+        # env:
+        #   VITE_API_URL: ${{ secrets.VITE_API_URL_STAGING }}
+        run: pnpm build:staging
+      - name: Publish to deploy/staging
+        env:
+          DEPLOY_TOKEN: ${{ steps.app.outputs.token }}
+        run: ./scripts/publish-dist.sh deploy/staging "${{ steps.version.outputs.value }}"
