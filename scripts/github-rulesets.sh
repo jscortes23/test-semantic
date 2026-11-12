@@ -32,7 +32,8 @@ source_branch_ruleset() {
         "dismiss_stale_reviews_on_push": false,
         "require_code_owner_review": false,
         "require_last_push_approval": false,
-        "required_review_thread_resolution": true
+        "required_review_thread_resolution": true,
+        "allowed_merge_methods": ["merge"]
       }
     },
     {
