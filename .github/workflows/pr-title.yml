@@ -29,14 +29,5 @@ jobs:
             build
             ci
             chore
-          scopes: |
-            ui
-            layout
-            version
-            hooks
-            config
-            deps
-            ci
-            release
-            docs
+          # No `scopes` list: any scope is accepted, matching the warning-only scope rule in commitlint.
           requireScope: false
